@@ -1,0 +1,29 @@
+<h1>Inventory for {{locationName}}</h1>
+<table>
+    <thead>
+        <tr>
+            <th>Entry ID</th>
+            <th>Model</th>
+            <th>Year</th>
+            <th>Type</th>
+            <th>Quantity</th>
+        </tr>
+    </thead>
+    <tbody>
+        {{#each inventory}}
+        <tr>
+            <td>{{this.entryID}}</td>
+            <td>{{this.model}}</td>
+            <td>{{this.year}}</td>
+            <td>{{this.type}}</td>
+            <td>{{this.quantity}}</td>
+        </tr>
+        {{/each}}
+    </tbody>
+</table>
+
+<br>
+<a href="/Locations">Back to Locations</a>
+
+
+

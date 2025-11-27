@@ -1,0 +1,37 @@
+<head>
+    <style>
+        nav:not(.nav-centered-homepage) {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="homepage-container">
+        <h1 id="homepage-title">Home Page</h1>
+        <p class="homepageDescription">description goes here </p>
+
+        <nav class="nav-centered-homepage">
+            <a href="/Addresses">Address Table</a>
+            <a href="/Customers">Customer Table</a>
+            <a href="/Employees">Employee Table</a>
+            <a href="/Locations">Location Table</a>
+            <a href="/Vehicles">Vehicle Table</a>
+            <a href="/Orders">Order Table</a>
+        </nav>
+
+        <form action="/reset" method="POST" onsubmit="return confirm('DANGER: Are you sure you want to erase and reset the entire database schema and all data? This action cannot be undone.');">
+            <button type="submit" style="background-color: red; color: white; padding: 10px; margin-top: 20px;">
+                RESET ALL DATABASE DATA
+            </button>
+        </form>
+
+        <!-- Script added to generate a popup if a success message exists -->
+        {{#if successMessage}}
+            <script>
+                alert("✅ {{successMessage}}");
+            </script>
+        {{/if}}
+
+    </div>
+</body>
+</html>
