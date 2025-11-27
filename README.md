@@ -1,84 +1,73 @@
-CS340 Project Specifications
-This document outlines the requirements for your final database project submission.
+CS340 project specifications
+This document outlines the requirements for your final database project submission, including schema, web interface behavior, query usage, stored procedures, and minimum deliverables.
 
-Database Requirements
-The database must be pre-populated with sample data.
+Database requirements
+Pre-populated data: Include at least 3 rows per table.
 
-Include at least 3 rows per table.
+Illustrative samples: Seed data must demonstrate functionality, especially for many-to-many (M:M) relationships.
 
-Sample data should illustrate table functionality, especially for many-to-many (M:M) relationships.
+Minimum schema: At least 4 entities and at least 4 relationships, with at least one M:M.
 
-The schema must include:
+Web interface guidelines
+Audience: Admin-only interface; not customer-facing.
 
-At least 4 entities
+No auth features: No login, sessions, registration/password, shopping cart, etc.
 
-At least 4 relationships, with at least one M:M relationship
+Page count expectation: If 4 entities are implemented as 5 tables, expect about 5 pages.
 
-Web Interface Guidelines
-The interface is admin-facing only.
+M:M page: A single page may be used to manage the relationship between 2 tables.
 
-No login, sessions, registration, password, or shopping cart features are required.
+Optional home: You may include a simple home/landing page.
 
-If 4 entities are implemented as 5 tables, expect roughly 5 web app pages.
+Query requirements
+Per-table SELECT: Each table must be used in at least one SELECT query.
 
-A single page may be used for M:M relationships between 2 tables.
+Display content: SELECTs should show table contents; do not join all tables in a single query.
 
-Optionally, a home page may be added.
+Stored procedures and injection prevention
+Required stored procedures: Use stored procedures for INSERT, DELETE, and UPDATE.
 
-Query Requirements
-Each table must be used in at least one SELECT query.
+Security goal: Procedures must be used to guard against SQL injection.
 
-SELECT queries should display table contents.
+CUD functionality (create, update, delete)
+Scope: Implement INSERT, UPDATE, and DELETE for at least one entity, preferably within an M:M relationship.
 
-Do not join all tables in one query.
+Distribution: CUD can be split across multiple pages or consolidated on one page.
 
-Stored Procedures & SQL Injection Prevention
-Use stored procedures for:
+Key selection UX
+No manual IDs: Do not type IDs directly.
 
-INSERT
-
-DELETE
-
-UPDATE
-
-These procedures help prevent SQL injection.
-
-CUD Functionality (Create, Update, Delete)
-Your site must implement:
-
-INSERT, UPDATE, and DELETE for at least one entity
-
-Preferably within a M:M relationship
-
-CUD operations may be:
-
-Distributed across multiple entity pages
-
-Combined on a single page
-
-Key Selection UX
-User IDs should not be entered manually
-
-Use drop-down lists or search text for foreign key selection
+Use controls: Provide drop-down lists or search inputs to select foreign keys.
 
 Examples
-INSERT: Add Products to OrderItems (intersection table between Products and Orders)
+INSERT (M:M): Add Products to OrderItems (OrderItems is the intersection between Products and Orders).
 
-DELETE: Remove a record from M:M without affecting related tables
+DELETE (M:M): Remove a record from an M:M relationship without affecting related tables.
 
-e.g., delete Orders made by a Customer
+For example, delete Orders made by a Customer.
 
-Can be done by setting CustomerID to NULL or deleting associated Orders
+Approaches include setting CustomerID to NULL or deleting Orders associated with that Customer.
 
-Reference: MySQL CASCADE
+Consider referential actions (e.g., MySQL CASCADE) as appropriate to your design.
 
-UPDATE: Change a foreign key in an intersection table
+UPDATE (M:M): Change a foreign key in an intersection table (e.g., update ProductID in OrderItems).
 
-e.g., update ProductID in OrderItems
+DDL and reset functionality
+DDL script: Create the database using a DDL script (as covered in modules 3–5).
 
-DDL Script & Reset Functionality
-Create the database using a DDL script
+Reset support: Provide a RESET capability so changes can be reverted.
 
-Covered in Modules 3, 4, and 5
+Minimum implementation checklist
+SELECTs: 5
 
-Changes should be reversible using a RESET function
+INSERT (PL/SQL on M:M): 1
+
+UPDATE (PL/SQL on M:M): 1
+
+DELETE (PL/SQL on M:M): 1
+
+Dynamic selection: Drop-down or search for keys
+
+Reset or PL/SQL utility: At least 1
+
+Total functions: Minimum of 10
